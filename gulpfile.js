@@ -19,6 +19,8 @@ var lib = require('bower-files')({
   }
 });
 
+var browserSync = require('browser-sync').create();
+
 gulp.task('jshint', function(){
   return gulp.src(['js/*.js'])
     .pipe(jshint())
@@ -70,4 +72,13 @@ gulp.task('build', ['clean'], function(){
     gulp.start('jsBrowserify');
   }
   gulp.start('bower');
+});
+
+gulp.task('serve', function() {
+  browserSync.init({
+    server: {
+      baseDir: "./",
+      index: "index.html"
+    }
+  });
 });
