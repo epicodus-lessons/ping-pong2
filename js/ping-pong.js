@@ -1,4 +1,10 @@
-exports.pingPong = function(goal) {
+// create constructor function
+var PingClassConstruct = function(args) {
+
+};
+
+// add prototypes
+PingClassConstruct.prototype.pingPong = function(goal) {
   var output = [];
   for (var i = 1; i <= goal; i++) {
     if (i % 15 == 0) {
@@ -13,3 +19,7 @@ exports.pingPong = function(goal) {
   }
   return output;
 }
+
+// put constructor onto exports as a property and it pulls the prototypes with it.
+
+exports.PingProperty = PingClassConstruct;
