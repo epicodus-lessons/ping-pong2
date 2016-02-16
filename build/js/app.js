@@ -1,1 +1,55 @@
-!function n(e,o,r){function t(u,p){if(!o[u]){if(!e[u]){var f="function"==typeof require&&require;if(!p&&f)return f(u,!0);if(i)return i(u,!0);var a=new Error("Cannot find module '"+u+"'");throw a.code="MODULE_NOT_FOUND",a}var c=o[u]={exports:{}};e[u][0].call(c.exports,function(n){var o=e[u][1][n];return t(o?o:n)},c,c.exports,n,e,o,r)}return o[u].exports}for(var i="function"==typeof require&&require,u=0;u<r.length;u++)t(r[u]);return t}({1:[function(n,e,o){o.pingPong=function(n){for(var e=[],o=1;n>=o;o++)o%15===0?e.push("ping-pong"):o%3===0?e.push("ping"):o%5===0?e.push("pong"):e.push(o);return e}},{}],2:[function(n,e,o){var r=n("./../js/ping-pong.js").pingPong;$(document).ready(function(){$("#ping-pong").submit(function(n){n.preventDefault();var e=$("#goal").val(),o=r(e);o.forEach(function(n){$("#solution").append("<li>"+n+"</li>")})})}),$(document).ready(function(){$("#signup").submit(function(n){n.preventDefault();var e=$("#email").val();$("#signup").hide(),$("#solution").prepend("<p>Thank you, "+e+" has been added to our list!</p>")})}),$(document).ready(function(){$("#time").text(moment())})},{"./../js/ping-pong.js":1}]},{},[2]);
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+exports.pingPong = function(goal) {
+  var output = [];
+  for (var i = 1; i <= goal; i++) {
+    if (i % 15 === 0) {
+      output.push("ping-pong");
+    } else if (i % 3 === 0) {
+      output.push("ping");
+    } else if (i % 5 === 0) {
+      output.push("pong");
+    } else  {
+      output.push(i);
+    }
+  }
+  return output;
+};
+
+},{}],2:[function(require,module,exports){
+var pingPong = require('./../js/ping-pong.js').pingPong;
+
+$(document).ready(function(){
+  $('#ping-pong').submit(function(event){
+    event.preventDefault();
+    var goal = $('#goal').val();
+    var output = pingPong(goal);
+    output.forEach(function(element){
+      $('#solution').append("<li>" + element + "</li>");
+    });
+  });
+});
+
+$(document).ready(function(){
+  $('#signup').submit(function(event){
+    event.preventDefault();
+    var email = $('#email').val();
+    $('#signup').hide();
+    $('#solution').prepend('<p>Thank you, ' + email + ' has been added to our list!</p>');
+  });
+});
+
+$(document).ready(function(){
+  $('#time').text(moment());
+});
+
+var apiKey = "YOUR-API-KEY-GOES-HERE";
+
+$(document).ready(function(){
+  $('#weatherLocation').click(function(){
+    var city = $('#location').val();
+    $('#location').val("");
+    $('.showWeather').text("The city you have chosen is " + city + ".");
+  });
+});
+
+},{"./../js/ping-pong.js":1}]},{},[2]);
