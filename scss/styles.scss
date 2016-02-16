@@ -1,4 +1,5 @@
 $gray : #d3d3d3;
+$green : #75B975;
 
 .box {
   background: $gray;
@@ -7,7 +8,7 @@ $gray : #d3d3d3;
   .button {
     font-weight: bold;
     text-align: center;
-    background: red;
+    background: $green;
     color: white;
   }
 }
