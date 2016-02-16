@@ -84,11 +84,13 @@ gulp.task('serve', function() {
 
   gulp.watch(['js/*.js'], ['jsBuild']);
   gulp.watch(['bower.json'], ['bowerBuild']);
+  
 });
 
 gulp.task('jsBuild', ['minifyScripts', 'jshint'], function(){
   browserSync.reload();
 });
+
 gulp.task('bowerBuild', ['bower'], function(){
   browserSync.reload();
 });
