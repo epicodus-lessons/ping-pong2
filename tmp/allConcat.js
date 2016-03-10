@@ -24,7 +24,7 @@ $(document).ready(function(){
   $('#time').text(moment());
 });
 
-var apiKey = "e572e1a4c7b5d74308c11f537d1682e0";
+var apiKey = require('./../config.env').apiKey;
 
 $(document).ready(function(){
   $('#weatherLocation').click(function(){
